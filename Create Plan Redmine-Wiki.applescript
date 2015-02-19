@@ -46,17 +46,26 @@ on editRow(x, y, myText, myComment, myDocument)
 			text of myDocument Â
 			& my getBeginningOfLine(x) Â
 			& myText Â
+			& my getComment(myComment) Â
 			& return Â
 			& my getEndOfLine(x)
 	end tell
 end editRow
 
+on getComment(comment)
+	if (comment is not "") then
+		return return & return Â
+			& comment Â
+			& return & return
+	end if
+end getComment
+
 on getBeginningOfLine(x)
 	set beginningOfLine to ""
 	if (x = 1) then
-		set beginningOfLine to return & "h1."
+		set beginningOfLine to return & return & "___" & return & return & "h2."
 	else if (x = 2) then
-		set beginningOfLine to return & "h2."
+		set beginningOfLine to return & "h3."
 	else
 		set x to x - 2
 		repeat x times
